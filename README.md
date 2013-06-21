@@ -1,7 +1,7 @@
 android_device_exynos4Brothers
 ==============================
 
-device config for Cellon C8960, Newman N2, Freelander i20 and Highscreen Explosion(not complete).
+device config for Cellon C8690, Newman N2, Freelander i20 and Highscreen Explosion(not complete).
 
 Сборка: make -j4 PRODUCT-full_i9300-user dist
 
