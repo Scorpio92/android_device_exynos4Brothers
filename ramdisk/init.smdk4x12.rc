@@ -1,0 +1,31 @@
+import init.smdk4x12.usb.rc
+on early-init
+    export EXTERNAL_STORAGE /mnt/sdcard
+    mkdir /mnt/sdcard 0000 system system
+    mkdir /mnt/sdcard2 0775 system system
+    mkdir /mnt/udisk 0775 system system
+    symlink /mnt/sdcard /sdcard
+
+service console /system/bin/sh
+    class core
+    console
+    group log
+
+on boot
+    setprop ro.build.product smdk4x12
+    setprop ro.product.device smdk4x12
+    setprop ro.radio.noril yes
+
+on fs
+    mount ext4 /dev/block/mmcblk0p2 /system rw wait
+    mount ext4 /dev/block/mmcblk0p3 /data nosuid nodev noatime wait usedm discard,noauto_da_alloc,nodelalloc
+    mount ext4 /dev/block/mmcblk0p4 /cache wait nosuid nodev noatime nomblk_io_submit
+
+# Permissions for backlight
+    chmod 0665 /sys/class/backlight/pwm-backlight.0/brightness
+    chown system system /sys/class/backlight/pwm-backlight.0/brightness
+
+#yyd- 111206, add sensor
+    chmod 0777 /dev/mpu
+    chmod 0777 /dev/mpuirq
+    chmod 0777 /dev/timerirq
