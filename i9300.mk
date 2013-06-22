@@ -95,6 +95,9 @@ $(call inherit-product-if-exists, vendor/samsung/i9300/i9300-vendor.mk)
 #CM
 $(call inherit-product, $(LOCAL_PATH)/cm_full.mk)
 
+#Additional apps
+#$(call inherit-product, $(LOCAL_PATH)/Additional.mk)
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
