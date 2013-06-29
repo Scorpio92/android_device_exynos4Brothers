@@ -19,10 +19,6 @@ PRODUCT_PACKAGES := \
     com.android.future.usb.accessory \
     libnetcmdiface 
 
-# OMX
-PRODUCT_PACKAGES += \
-    libstagefrighthw 
-
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     static_busybox \
@@ -87,8 +83,6 @@ PRODUCT_COPY_FILES += \
 TARGET_HAL_PATH := hardware/samsung/exynos4/hal
 
 $(call inherit-product, hardware/samsung/exynos4x12.mk)
-
-#TARGET_OMX_PATH := hardware/samsung/exynos/multimedia/openmax //пока обойдемся родными кодеками
 
 $(call inherit-product-if-exists, vendor/samsung/i9300/i9300-vendor.mk)
 
