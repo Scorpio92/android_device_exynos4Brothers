@@ -73,6 +73,10 @@ ro.ril.disable.power.collapse=0
 pm.sleep_mode=1
 wifi.supplicant_scan_interval=120
 
+#Wifi
+wifi.interface=wlan0
+mobiledata.interfaces=pdp0,wlan0,gprs,ppp0
+
 #Some others settings
 ro.opengles.version=131072
 drm.service.enabled=true
