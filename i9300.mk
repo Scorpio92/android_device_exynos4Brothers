@@ -45,12 +45,12 @@ PRODUCT_COPY_FILES += \
 # Init files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/init.cm.rc:root/init.cm.rc \
-    $(LOCAL_PATH)/ramdisk/init.rc:root/init.rc \
     $(LOCAL_PATH)/ramdisk/init.smdk4x12.rc:root/init.smdk4x12.rc \
     $(LOCAL_PATH)/ramdisk/init.smdk4x12.usb.rc:root/init.smdk4x12.usb.rc \
     $(LOCAL_PATH)/ramdisk/init.usb.rc:root/init.usb.rc \
     $(LOCAL_PATH)/ramdisk/ueventd.rc:root/ueventd.rc \
     $(LOCAL_PATH)/ramdisk/ueventd.smdk4x12.rc:root/ueventd.smdk4x12.rc
+#    $(LOCAL_PATH)/ramdisk/init.rc:root/init.rc \
 
 
 # These are the hardware-specific features
