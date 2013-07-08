@@ -55,7 +55,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_USES_GENERIC_AUDIO := true
 
 # Graphics
-BOARD_EGL_CFG := vendor/samsung/i9300/proprietary/system/lib/egl/egl.cfg
+BOARD_EGL_CFG := vendor/samsung/i9300/proprietary/main/system/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_USES_SKIAHWJPEG := true
 COMMON_GLOBAL_CFLAGS += -DSEC_HWJPEG_G2D
@@ -108,7 +108,7 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUEDROID_VENDOR_CONF := device/samsung/i9300/bluetooth/vnd_smdk4x12.txt
 WITH_A2DP := true
-BOARD_CUSTOM_BRCM_PATCHRAM_PLUS := ../../../vendor/samsung/i9300/proprietary/system/bin/brcm_patchram_plus.c
+BOARD_CUSTOM_BRCM_PATCHRAM_PLUS := ../../../vendor/samsung/i9300/proprietary/main/system/bin/brcm_patchram_plus.c
 BOARD_BLUETOOTH_BCM4329 := false
 
 #GPS
@@ -119,6 +119,9 @@ BOARD_BLUETOOTH_BCM4329 := false
 #Sensors
 BOARD_VENDOR_USE_AKMD := true
 BOARD_VENDOR_USE_AKMD := akm8963
+
+#Touchscreen
+BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/s3c-usbgadget/gadget/lun0/file"

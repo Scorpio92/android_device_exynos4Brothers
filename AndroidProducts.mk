@@ -15,4 +15,5 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/i9300.mk
+    $(LOCAL_DIR)/newman.mk \
+    $(LOCAL_DIR)/highscreen.mk 

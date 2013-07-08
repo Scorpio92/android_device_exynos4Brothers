@@ -14,7 +14,7 @@ service console /system/bin/sh
 on init
 
 # setup the global environment
-    export PATH /sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin:/system/busybox/bin:/system/busybox/sbin:/system/busybox/usr/bin:/system/busybox/usr/sbin
+#    export PATH /sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin:/system/busybox/bin:/system/busybox/sbin:/system/busybox/usr/bin:/system/busybox/usr/sbin
 
 #AKMD sensors
     chown system system /sys/class/compass/akm8963/enable_acc
@@ -33,8 +33,8 @@ on init
 
 on boot
 
-    setprop ro.build.product smdk4x12
-    setprop ro.product.device smdk4x12
+    setprop ro.build.product C8690
+    setprop ro.product.device C8690
     setprop ro.radio.noril yes
 
     # Permissions for backlight
@@ -44,6 +44,10 @@ on boot
 # permissions for bluetooth control.
 #    chown bluetooth bluetooth /dev/ttySAC0
 #    chmod 0777 /dev/ttySAC0
+
+#Mali
+    chown root system /sys/bus/platform/devices/mali_dev.0/mali_lock
+    chmod 0664 /sys/bus/platform/devices/mali_dev.0/mali_lock
 
     #chy add for reset modem
     chown root system /sys/devices/platform/smm_modem/control
@@ -116,15 +120,21 @@ on fs
     chmod 0777 /dev/mpuirq
     chmod 0777 /dev/timerirq
 
-on post-fs
+#on post-fs
+
+#GPS
+#    mkdir /data/gps
+#    chmod 0755 /data/gps
+#    chmod 0775 /sys/class/switch/gps_en_rst_switch/gps_en 
+#    chmod 0660 /dev/ttySAC1
+
+on post-fs-data
 
 #GPS
     mkdir /data/gps
     chmod 0755 /data/gps
     chmod 0775 /sys/class/switch/gps_en_rst_switch/gps_en 
     chmod 0660 /dev/ttySAC1
-
-on post-fs-data
 
 #Wifi
     chown wifi wifi /system/etc/wifi/wpa_supplicant.conf
@@ -135,6 +145,8 @@ on post-fs-data
     setprop wifi.interface "wlan0"
     setprop wlan.interface "wlan0"
     setprop wlan.driver.status "ok"
+
+#    setprop vold.post_fs_data_done 1
 
     mkdir /data/misc/encryption 0777 system system
     mkdir /data/system 0775 system system 
@@ -163,8 +175,10 @@ on post-fs-data
     # chmod tmp test file for ar1000 debug 
     chmod 0777 /dev/radio0
 
-    chown root system /sys/bus/platform/devices/mali_dev.0/mali_lock
-    chmod 0664 /sys/bus/platform/devices/mali_dev.0/mali_lock
+    setprop ro.camera.sound.forced 1
+
+#    chown root system /sys/bus/platform/devices/mali_dev.0/mali_lock
+#    chmod 0664 /sys/bus/platform/devices/mali_dev.0/mali_lock
     chown root system /sys/module/bcmdhd/parameters/mac_addrs
     chmod 0664 /sys/module/bcmdhd/parameters/mac_addrs
 #    setprop wifi.interface wlan0
@@ -175,11 +189,12 @@ on post-fs-data
 
     chown radio system sys/class/flash_led_test/flashledtest
     chmod 0664 sys/class/flash_led_test/flashledtest
+
     chown system system /system/bin/at
     chmod 0777 /system/bin/at  
 
 # Set indication (checked by vold) that we have finished this action
-    setprop vold.post_fs_data_done 1
+#    setprop vold.post_fs_data_done 1
 
 #Services
 
@@ -244,6 +259,12 @@ service hciattach /system/bin/sh /system/etc/bt/init.brcm.bt.sh
     disabled
     oneshot 
 
+service file_copy /system/bin/sh /system/etc/file_copy.sh
+   class main
+   user root
+   group root	
+   oneshot
+
 #service hciattach /system/bin/brcm_patchram_plus --patchram /system/etc/bt/broadcom_bt_fw.hcd /dev/ttySAC0 --baudrate 3000000 --scopcm=0,2,1,0,0 --enable_lpm --enable_hci --tosleep 50000
 #	class main
 #	user bluetooth
@@ -269,12 +290,6 @@ service akmd /system/bin/akmd8963 -m 2 -o 1
 	group system
 	oneshot
 
-service file_copy /system/bin/sh /system/etc/file_copy.sh
-   class main
-   user root
-   group root	
-   oneshot
-
- service charger /system/bin/charger
+service charger /system/bin/charger
 	class charger
 
