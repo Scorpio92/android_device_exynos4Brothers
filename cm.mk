@@ -73,8 +73,8 @@ PRODUCT_COPY_FILES += \
 # init.d support
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
-    vendor/cm/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit \
-    vendor/cm/prebuilt/common/bin/sysinit:system/bin/sysinit
+    vendor/cm/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit 
+#    vendor/cm/prebuilt/common/bin/sysinit:system/bin/sysinit
 
 # Compcache/Zram support
 PRODUCT_COPY_FILES += \
@@ -107,7 +107,6 @@ include vendor/cm/config/themes_common.mk
 
 # Required CM packages
 PRODUCT_PACKAGES += \
-    Camera \
     Development \
     LatinIME \
     SpareParts 
@@ -181,7 +180,7 @@ ifdef CM_BUILDTYPE
     endif
 else
     # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := UNOFFICIAL
+    CM_BUILDTYPE := Exynos4Brothers
     CM_EXTRAVERSION :=
 endif
 
