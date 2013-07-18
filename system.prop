@@ -45,15 +45,28 @@ ro.config.alarm_alert=Alarm_Classic.ogg
 ro.media.cam.preview.fps=0
 media.stagefright.enable-player=true
 media.stagefright.enable-meta=true
-media.stagefright.enable-scan=true
+media.stagefright.enable-scan=false
 media.stagefright.enable-http=true
 media.stagefright.enable-rtsp=true
 
 # Dalvik
+dalvik.vm.heapstartsize=8m
+dalvik.vm.heapgrowthlimit=96m
+dalvik.vm.heapsize=256m
+dalvik.vm.heaputilization=0.25
+dalvik.vm.heapidealfree=8388608
+dalvik.vm.heapconcurrentstart=2097152
 dalvik.vm.execution-mode=int:jit
 dalvik.vm.verify-bytecode=false
 dalvik.vm.lockprof.threshold=500
 dalvik.vm.dexopt-data-only=1
+#dalvik.vm.dexopt-flags=m=v,o=y
+dalvik.vm.dexopt-flags=v=n,u=n,o=v
+
+#Disable checking
+ro.kernel.android.checkjni=0
+ro.kernel.checkjni=0
+ro.config.nocheckin=1
 
 #Performance#
 debug.gralloc.vsync=0
@@ -61,6 +74,8 @@ hwui.render_dirty_regions=false
 debug.sf.hw=1
 #video.accelerate.hw=1
 #debug.performance.tuning=0
+#debug.egl.profiler=1
+#debug.egl.hw=1
 #debug.composition.type=mdp
 #persist.sys.ui.hw=true
 windowsmgr.max_events_per_sec=60
