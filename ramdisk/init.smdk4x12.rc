@@ -1,10 +1,20 @@
 import init.smdk4x12.usb.rc
 on early-init
+#Stock
+#    export EXTERNAL_STORAGE /mnt/sdcard
+#    mkdir /mnt/sdcard 0000 system system
+#    mkdir /mnt/sdcard2 0775 system system
+#    mkdir /mnt/udisk 0775 system system
+#    symlink /mnt/sdcard /sdcard
+
+#New variant
     export EXTERNAL_STORAGE /mnt/sdcard
+    export SECONDARY_STORAGE /mnt/ext_sd
     mkdir /mnt/sdcard 0000 system system
-    mkdir /mnt/sdcard2 0775 system system
+    mkdir /mnt/ext_sd 0775 system system
     mkdir /mnt/udisk 0775 system system
     symlink /mnt/sdcard /sdcard
+    symlink /mnt/ext_sd /ext_sd
 
 service console /system/bin/sh
     class core
@@ -289,6 +299,11 @@ service akmd /system/bin/akmd8963 -m 2 -o 1
 	user system
 	group system
 	oneshot
+
+#Run init.d
+service runinit /system/etc/runinit.sh
+    class main
+    oneshot
 
 service charger /system/bin/charger
 	class charger

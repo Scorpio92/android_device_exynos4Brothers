@@ -31,16 +31,26 @@
 
       A storage should not have both emulated and removable set to true
 -->
-
-<StorageList xmlns:android="http://schemas.android.com/apk/res/android">
- <storage android:mountPoint="/mnt/sdcard" 
- android:storageDescription="@string/Phone_memory" 
- android:volumeLabel="sdcard"
- android:removable="true"
- android:allowMassStorage="true" />
- <storage android:mountPoint="/mnt/sdcard/external_SD" 
- android:storageDescription="@string/storage_sd_card" 
- android:volumeLabel="sdcard2"
- android:removable="true" 
- android:allowMassStorage="true" />
+<!--Stock
+<StorageList
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <storage android:mountPoint="/mnt/sdcard" android:storageDescription="@string/Phone_memory" android:volumeLabel="sdcard" android:primary="true" android:allowMassStorage="true" />
+    <storage android:mountPoint="/mnt/sdcard/external_SD" android:storageDescription="@string/storage_sd_card" android:volumeLabel="sdcard2" android:removable="true" android:allowMassStorage="true" />
 </StorageList>
+-->
+
+<!--
+New variant
+-->
+<StorageList xmlns:android="http://schemas.android.com/apk/res/android">
+    <storage android:mountPoint="/mnt/sdcard"
+        android:storageDescription="@string/Phone_memory"
+        android:primary="true"
+        android:allowMassStorage="true" />
+	<storage android:mountPoint="/mnt/ext_sd"
+	android:storageDescription="@string/storage_sd_card"
+	android:primary="false"
+	android:removable="true" 
+        android:allowMassStorage="true" />
+</StorageList>
+
