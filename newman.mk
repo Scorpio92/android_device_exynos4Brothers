@@ -3,8 +3,9 @@
 
 LOCAL_PATH := device/samsung/i9300
 
-PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
-PRODUCT_AAPT_PREF_CONFIG := xhdpi
+#PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
+PRODUCT_AAPT_CONFIG := normal hdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -18,7 +19,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES := \
     com.android.future.usb.accessory \
     libnetcmdiface \
-    Stk
+    Stk \
+    Torch
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
