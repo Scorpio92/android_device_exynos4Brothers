@@ -1,10 +1,11 @@
 # scorpio92(4PDA), config for Cellon C8960, Newman N2, Freelander i20
 #2013
 
-LOCAL_PATH := device/samsung/i9300
+LOCAL_PATH := device/cellon/c8690
 
-PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
-PRODUCT_AAPT_PREF_CONFIG := xhdpi
+#PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
+PRODUCT_AAPT_CONFIG := normal hdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -18,7 +19,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES := \
     com.android.future.usb.accessory \
     libnetcmdiface \
-    Stk
+    Stk \
+    Torch \
+    Exchange
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -78,11 +81,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
 # Include exynos4 platform specific parts
-TARGET_HAL_PATH := hardware/samsung/exynos4/hal
+#TARGET_HAL_PATH := hardware/samsung/exynos4/hal
 
-$(call inherit-product, hardware/samsung/exynos4x12.mk)
+#$(call inherit-product, hardware/samsung/exynos4x12.mk)
 
-$(call inherit-product-if-exists, vendor/samsung/i9300/highscreen.mk)
+#$(call inherit-product-if-exists, vendor/samsung/i9300/highscreen.mk)
 
 #CM
 $(call inherit-product, $(LOCAL_PATH)/cm_full.mk)

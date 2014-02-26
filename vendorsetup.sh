@@ -1,0 +1,5 @@
+add_lunch_combo newman-userdebug
+add_lunch_combo newman-eng
+add_lunch_combo highscreen-userdebug
+add_lunch_combo highscreen-eng
+

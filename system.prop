@@ -1,128 +1,26 @@
-#
-# system.prop for Cellon C8960, Newman N2, Freelander i20
+# system.prop for Cellon C8960, Newman N2, Freelander i20, Highscreen Explosion
 #
 
 #RIL
 rild.libpath=/system/lib/libreference-ril.so
 rild.libargs=-d /dev/ttyS0
-ro.ril.hsxpa=1 
-ro.ril.gprsclass=10
-
-## Phone
-mobiledata.interfaces=pdp0,wlan0,gprs,ppp0
-ro.telephony.call_ring.multiple=false
-ro.telephony.call_ring.delay=0 
-#ro.lge.proximity.delay=25
-#mot.proximity.delay=25
-persist.cust.tel.adapt=1 
-persist.cust.tel.eons=1
-ro.ril.enable.amr.wideband=1
-ro.com.android.dataroaming=false
-keyguard.no_require_sim=true
 
 #LCD
-#xhdpi
-#ro.sf.lcd_density=320
-#hdpi
-ro.sf.lcd_density=260
-ro.lcd_min_brightness=120
+ro.sf.lcd_density=320
+ro.lcd_min_brightness=50
 
-#Media
-ro.config.ringtone=CyanTone.ogg
-ro.config.notification_sound=OnTheHunt.ogg
-ro.config.alarm_alert=Alarm_Classic.ogg
-ro.media.cam.preview.fps=0
-media.stagefright.enable-player=true
-media.stagefright.enable-meta=false
-media.stagefright.enable-scan=false
-media.stagefright.enable-http=true
-media.stagefright.enable-aac=true
-media.stagefright.enable-qcp=true
 
-# Dalvik
-dalvik.vm.heapstartsize=8m
-dalvik.vm.heapgrowthlimit=96m
-dalvik.vm.heapsize=256m
-#dalvik.vm.heaputilization=0.25
-#dalvik.vm.heapidealfree=8388608
-#dalvik.vm.heapconcurrentstart=2097152
-dalvik.vm.heapminfree=2m 
-dalvik.vm.heapmaxfree=8m
-dalvik.vm.execution-mode=int:jit
-dalvik.vm.verify-bytecode=false
-dalvik.vm.lockprof.threshold=500
-dalvik.vm.dexopt-data-only=1
-#dalvik.vm.dexopt-flags=m=v,o=y
-#dalvik.vm.dexopt-flags=v=n,u=n,o=v
-dalvik.vm.dexopt-flags=m=y
-#Сброс битмапов
-persist.sys.purgeable_assets=1
-
-# OOM adj and lowmem values
-sys.mem.max_hidden_apps=0
--------------------------
-#default: 0, 1, 2, 4, 9, 15
-sys.mem.FOREGROUND_APP_ADJ=0
-sys.mem.VISIBLE_APP_ADJ=3
-sys.mem.PERCEPTIBLE_APP_ADJ=6
-sys.mem.BACKUP_APP_ADJ=10
-sys.mem.HIDDEN_APP_MIN_ADJ=13
-sys.mem.HIDDEN_APP_MAX_ADJ=15
------------------------------
-#default: 8192, 12288, 16384, 24576, 28672, 32768
-sys.mem.FOREGROUND_APP_MEM=8192
-sys.mem.VISIBLE_APP_MEM=12288
-sys.mem.PERCEPTIBLE_APP_MEM=30720
-sys.mem.BACKUP_APP_MEM=36864
-sys.mem.HIDDEN_APP_MIN_MEM=51200
-sys.mem.HIDDEN_APP_MAX_MEM=76800
-
-#Disable checking
-ro.kernel.android.checkjni=0
-ro.kernel.checkjni=0
-ro.config.nocheckin=1
-
-#Performance#
+#Performance
 debug.gralloc.vsync=0
-hwui.render_dirty_regions=false
-debug.sf.hw=1
-video.accelerate.hw=1
-debug.performance.tuning=1
-#debug.egl.profiler=1
-#debug.egl.hw=1
-debug.composition.type=gpu
-persist.sys.ui.hw=true
-windowsmgr.max_events_per_sec=60
-persist.sys.use_16bpp_alpha=1
-#persist.sys.scrollingcache=2
-persist.sys.use_dithering=1
-ro.hwui.texture_cache_size=48
-debug.gr.numframebuffers=2
 hwui.disable_vsync=true
+debug.hwui.render_dirty_regions=false
+hwui.render_dirty_regions=false
+persist.sys.strictmode.visual=false
+persist.sys.strictmode.disable=1
+ro.zygote.disable_gl_preload=1 
+ro.opengles.version=131072 
+ro.bq.gpu_to_cpu_unsupported=1 
 
-#Powersave
-ro.ril.disable.power.collapse=0
-pm.sleep_mode=1
-wifi.supplicant_scan_interval=120
-persist.radio.add_power_save=1
-ro.config.hw_power_saving=true
 
-#Battery
-ro.config.lowbattery_shutdown=5
-
-#Wifi
-wifi.interface=wlan0
-
-#Some others settings
-ro.opengles.version=131072
-drm.service.enabled=true
-persist.sys.timezone=Asia/Vladivostok
-persist.sys.language=ru
-persist.sys.country=RU
-ro.product.locale.language=en
-ro.product.locale.region=US
-persist.sys.usb.config=mass_storage,adb
-#Nav Bar (1=off, 0=on) 
-qemu.hw.mainkeys=1
-ro.camera.sound.forced=1
-
+ro.adb.secure=0
+ro.secure=0
