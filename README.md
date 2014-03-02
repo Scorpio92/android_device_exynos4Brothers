@@ -3,14 +3,19 @@ android_device_exynos4Brothers
 
 device config for Cellon C8690, Newman N2, Freelander i20 and Highscreen Explosion.
 
-Сборка:
+How to build:
 
-make -j5 PRODUCT-newman-user dist   (обычная)
+1. Download all repositories: http://4pda.ru/forum/index.php?showtopic=473990&view=findpost&p=22948200
 
-make -j5 PRODUCT-highscreen-user dist   (обычная)
+2. Apply patches from: https://github.com/Scorpio92/android_patches_exynos4Brothers
 
-make -j5 PRODUCT-newman-eng   (инженерная, с расширенными возможностями отладки, больше инфы в логах)
+3. Enter commands:
 
-make -j5 PRODUCT-highscreen-eng   (инженерная, с расширенными возможностями отладки, больше инфы в логах)
+. build/envsetup.sh
 
-П.С. "j5" если у вас 4-х поточный проц (4+1)
+lunch
+
+put number
+
+mka otapackage
+
