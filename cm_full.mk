@@ -1,5 +1,5 @@
 # Inherit common CM stuff
-$(call inherit-product, device/samsung/i9300/cm.mk)
+$(call inherit-product, device/cellon/c8690/cm.mk)
 
 # Bring in all audio files
 include frameworks/base/data/sounds/NewAudio.mk

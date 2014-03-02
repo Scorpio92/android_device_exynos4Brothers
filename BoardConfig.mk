@@ -1,9 +1,10 @@
 # scorpio92(4PDA), config for Cellon C8960, Newman N2, Freelander i20
 #2013
 
-TARGET_OTA_ASSERT_DEVICE := m0,i9300,GT-I9300
+TARGET_OTA_ASSERT_DEVICE := c8690,c8690,c8690
 DISABLE_DEXPREOPT := true
-TARGET_SPECIFIC_HEADER_PATH := device/samsung/i9300/overlay/include
+TARGET_SPECIFIC_HEADER_PATH := device/cellon/c8690/overlay/include
+
 
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -22,6 +23,7 @@ COMMON_GLOBAL_CFLAGS += -DEXYNOS4_ENHANCEMENTS
 COMMON_GLOBAL_CFLAGS += -DEXYNOS4X12_ENHANCEMENTS
 COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 endif
+BOARD_VENDOR := samsung
 TARGET_BOARD_PLATFORM := exynos4
 TARGET_SOC := exynos4x12
 TARGET_BOOTLOADER_BOARD_NAME := smdk4x12
@@ -30,11 +32,13 @@ TARGET_BOOTLOADER_BOARD_NAME := smdk4x12
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 TARGET_NO_RECOVERY := false
+BOARD_CUSTOM_BOOTIMG_MK := device/cellon/c8690/img.mk
+#TARGET_PREBUILT_KERNEL := device/cellon/c8690/kernel.img
+BOARD_MKBOOTIMG_ARGS := 
 
-# Init
+# Ramdisk
 TARGET_PROVIDES_INIT := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
-TARGET_RECOVERY_INITRC := device/samsung/i9300/recovery.rc
 
 # Kernel
 BOARD_KERNEL_CMDLINE := "console=ttySAC2,115200"
@@ -45,10 +49,8 @@ BOARD_KERNEL_PAGESIZE := 2048
 
 # Recovery
 RECOVERY_NAME := CWM-based Recovery by kaasnake
-TARGET_RECOVERY_INITRC := device/samsung/i9300/recovery/recovery.rc
-TARGET_PROVIDES_INIT := true
-TARGET_PROVIDES_INIT_TARGET_RC := true
-BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/i9300/recovery/graphics.c
+TARGET_RECOVERY_INITRC := device/cellon/c8690/recovery/recovery.rc
+BOARD_CUSTOM_GRAPHICS := ../../../device/cellon/c8690/recovery/graphics.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
 BOARD_USES_MMCUTILS := true
@@ -65,6 +67,7 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 515899392
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1198522368
 BOARD_FLASH_BLOCK_SIZE := 4096
 TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_HAS_LARGE_FILESYSTEM := true
 
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/s3c-usbgadget/gadget/lun%d/file"
@@ -72,21 +75,42 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
 # Audio
 BOARD_USES_GENERIC_AUDIO := true
+BOARD_USES_LIBMEDIA_WITH_AUDIOPARAMETER := true
+
+# FM Radio
+#BOARD_HAVE_FM_RADIO := false
+#BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 
 # Camera
 USE_CAMERA_STUB := true
 
 # Graphics
-BOARD_EGL_CFG := vendor/samsung/i9300/proprietary/main/system/lib/egl/egl.cfg
+BOARD_EGL_CFG := vendor/cellon/c8690/proprietary/main/system/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_USES_SKIAHWJPEG := true
 COMMON_GLOBAL_CFLAGS += -DSEC_HWJPEG_G2D
+
+# FIMG Acceleration
+BOARD_USES_FIMGAPI := true
+BOARD_USES_SKIA_FIMGAPI := true
+
+# HWComposer
 BOARD_USES_HWCOMPOSER := true
 BOARD_USE_SYSFS_VSYNC_NOTIFICATION := true
 
+# OMX
+BOARD_USE_SAMSUNG_COLORFORMAT := true
+BOARD_NONBLOCK_MODE_PROCESS := true
+BOARD_USE_STOREMETADATA := true
+BOARD_USE_METADATABUFFERTYPE := true
+BOARD_USES_MFC_FPS := true
+BOARD_USE_S3D_SUPPORT := true
+BOARD_USE_CSC_FIMC := false
+
 # RIL
+#BOARD_PROVIDES_LIBRIL := true
+#BOARD_MODEM_TYPE := xmm6260
 BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0" 
-#BOARD_MOBILEDATA_INTERFACE_NAME := "rmnet0" 
 
 # Wifi
 BOARD_WLAN_DEVICE                := bcmdhd
@@ -112,9 +136,8 @@ HAVE_HOSTAPD                     := true
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUEDROID_VENDOR_CONF := device/samsung/i9300/bluetooth/vnd_smdk4x12.txt
+BOARD_BLUEDROID_VENDOR_CONF := device/cellon/c8690/bluetooth/vnd_smdk4x12.txt
 WITH_A2DP := true
-BOARD_CUSTOM_BRCM_PATCHRAM_PLUS := ../../../vendor/samsung/i9300/proprietary/main/system/bin/brcm_patchram_plus.c
 BOARD_BLUETOOTH_BCM4329 := false
 
 # GPS
@@ -132,19 +155,6 @@ BOARD_USE_LEGACY_TOUCHSCREEN := true
 # Enable WEBGL in WebKit
 ENABLE_WEBGL := true
 
-# Enable JIT
-WITH_JIT := true
-
-# OMX
-BOARD_USE_SAMSUNG_COLORFORMAT := true
-BOARD_NONBLOCK_MODE_PROCESS := true
-BOARD_USE_STOREMETADATA := true
-BOARD_USE_METADATABUFFERTYPE := true
-BOARD_USES_MFC_FPS := true
-BOARD_USE_S3D_SUPPORT := true
-BOARD_USE_CSC_FIMC := false
-
 # Charging mode
-BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 BOARD_BATTERY_DEVICE_NAME := "battery"
 

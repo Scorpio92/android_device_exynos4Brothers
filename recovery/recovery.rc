@@ -8,8 +8,7 @@ on init
     export EXTERNAL_STORAGE /sdcard
 
     mkdir /sdcard
-    mkdir /ext_sd
-    mkdir /external_sd
+    mkdir /sdcard2
     mkdir /system
     mkdir /data
     mkdir /cache
