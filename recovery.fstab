@@ -3,6 +3,6 @@
 /system		ext4		/dev/block/mmcblk0p2
 /cache		ext4		/dev/block/mmcblk0p4
 /data		ext4		/dev/block/mmcblk0p3
-/kernel		bml		    kernel
-/ramdisk    bml		    ramdisk
+/kernel		emmc		    kernel
+/ramdisk    emmc		    ramdisk
 

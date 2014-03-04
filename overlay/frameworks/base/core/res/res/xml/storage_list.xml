@@ -46,11 +46,11 @@ New variant
     <storage android:mountPoint="/mnt/sdcard"
         android:storageDescription="@string/Phone_memory"
         android:primary="true"
+	    android:removable="true" 
         android:allowMassStorage="true" />
-	<storage android:mountPoint="/mnt/ext_sd"
-	android:storageDescription="@string/storage_sd_card"
-	android:primary="false"
-	android:removable="true" 
+	<storage android:mountPoint="/mnt/sdcard2"
+	    android:storageDescription="@string/storage_sd_card"
+	    android:primary="false"
         android:allowMassStorage="true" />
 </StorageList>
 

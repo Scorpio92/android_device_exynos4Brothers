@@ -1,6 +1,10 @@
 # scorpio92(4PDA), config for Cellon C8960, Newman N2, Freelander i20
 #2013
 
+#Gralloc build fix
+$(shell mkdir -p out/target/product/c8690/obj/SHARED_LIBRARIES/libUMP_intermediates)
+$(shell touch out/target/product/c8690/obj/SHARED_LIBRARIES/libUMP_intermediates/export_includes)
+
 $(call inherit-product, device/cellon/c8690/common.mk)
 
 # kernel
