@@ -1,0 +1,45 @@
+import init.smdk4x12.usb.rc
+on early-init
+#Stock
+#    export EXTERNAL_STORAGE /mnt/sdcard
+#    mkdir /mnt/sdcard 0000 system system
+#    mkdir /mnt/sdcard2 0775 system system
+#    mkdir /mnt/udisk 0775 system system
+#    symlink /mnt/sdcard /sdcard
+
+#New variant
+    export EXTERNAL_STORAGE /mnt/sdcard
+    export SECONDARY_STORAGE /mnt/ext_sd
+    mkdir /mnt/sdcard 0000 system system
+    mkdir /mnt/ext_sd 0775 system system
+    mkdir /mnt/udisk 0775 system system
+    symlink /mnt/sdcard /sdcard
+    symlink /mnt/ext_sd /ext_sd
+
+# jmq.disable
+#on post-fs-data
+    # we will remap this as /mnt/sdcard with the sdcard fuse tool
+#    mkdir /data/media 0775 media_rw media_rw
+#    chown media_rw media_rw /data/media
+service console /system/bin/sh
+    class core
+    console
+    group log
+
+on boot
+    setprop ro.build.product C8690
+    setprop ro.product.device C8690
+    setprop ro.radio.noril yes
+
+on fs
+    mount_all /fstab.smdk4x12
+
+
+# Permissions for backlight
+    chmod 0665 /sys/class/backlight/pwm-backlight.0/brightness
+    chown system system /sys/class/backlight/pwm-backlight.0/brightness
+
+#yyd- 111206, add sensor
+    chmod 0777 /dev/mpu
+    chmod 0777 /dev/mpuirq
+    chmod 0777 /dev/timerirq
