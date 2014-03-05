@@ -4,7 +4,6 @@
 TARGET_OTA_ASSERT_DEVICE := c8690,c8690,c8690
 DISABLE_DEXPREOPT := true
 TARGET_SPECIFIC_HEADER_PATH := device/cellon/c8690/include
-BOARD_CUSTOM_BOOTIMG_MK := device/cellon/c8690/img.mk
 
 TARGET_BOOTANIMATION_PRELOAD := true
 
@@ -42,11 +41,12 @@ TARGET_BOOTLOADER_BOARD_NAME := smdk4x12
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 TARGET_NO_RECOVERY := true
+BOARD_CUSTOM_BOOTIMG_MK := device/cellon/c8690/img.mk
+BOARD_MKBOOTIMG_ARGS := 
 
 # Init
 TARGET_PROVIDES_INIT := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
-TARGET_RECOVERY_INITRC := device/cellon/c8690/recovery.rc
 
 # Selinux
 BOARD_SEPOLICY_DIRS += \
@@ -74,8 +74,6 @@ BOARD_KERNEL_PAGESIZE := 2048
 # Recovery
 RECOVERY_NAME := CWM-based Recovery by kaasnake
 TARGET_RECOVERY_INITRC := device/cellon/c8690/recovery/recovery.rc
-TARGET_PROVIDES_INIT := true
-TARGET_PROVIDES_INIT_TARGET_RC := true
 BOARD_CUSTOM_GRAPHICS := ../../../device/cellon/c8690/recovery/graphics.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun/file"

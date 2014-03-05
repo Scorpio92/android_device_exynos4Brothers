@@ -2,7 +2,7 @@ LOCAL_PATH := $(call my-dir)
 
 $(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES) $(MKIMAGE)
 	$(call pretty,"-- Creating c8690 uboot ramdisk image: $@")
-	$(MKIMAGE) -A ARM -O Linux -T ramdisk -C none -a 0x41000000 -e 0x41000000 -n ramdisk -d $(INSTALLED_RAMDISK_TARGET) $(PRODUCT_OUT)/ramdisk.img
+	$(MKIMAGE) -A ARM -O Linux -T ramdisk -C none -a 0x41000000 -e 0x41000000 -n ramdisk -d $(INSTALLED_RAMDISK_TARGET) $(PRODUCT_OUT)/ramdisk
 	@echo -e ${CL_CYN}"-- ---> uboot ramdisk image: $(PRODUCT_OUT)/ramdisk.img"${CL_RST}
 
 $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) $(MKIMAGE) \

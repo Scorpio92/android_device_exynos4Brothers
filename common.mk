@@ -14,10 +14,10 @@ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/battery.bqfs:root/battery.bqfs \
     $(LOCAL_PATH)/ramdisk/init.rc:root/init.rc \
-    $(LOCAL_PATH)/ramdisk/init.cm.rc:root/init.cm.rc \
     $(LOCAL_PATH)/ramdisk/init.smdk4x12.rc:root/init.smdk4x12.rc \
     $(LOCAL_PATH)/ramdisk/init.smdk4x12.usb.rc:root/init.smdk4x12.usb.rc \
     $(LOCAL_PATH)/ramdisk/ueventd.smdk4x12.rc:root/ueventd.smdk4x12.rc
+#    $(LOCAL_PATH)/ramdisk/init.cm.rc:root/init.cm.rc \
 
 # Packages
 PRODUCT_PACKAGES := \
@@ -25,6 +25,7 @@ PRODUCT_PACKAGES := \
     audio.usb.default \
     com.android.future.usb.accessory \
     libhwjpeg \
+    gralloc.exynos4 \
     hwcomposer.exynos4 \
     libfimg \
 	libTVOut \
