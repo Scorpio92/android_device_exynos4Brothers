@@ -17,7 +17,7 @@ $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) $(MKIMAGE) \
 	  --ramdisk $(PRODUCT_OUT)/ramdisk-recovery-uboot-tmp.img \
 	  --cmdline $(strip 	$(BOARD_KERNEL_CMDLINE)) \
 	  --base $(strip $(BOARD_KERNEL_BASE)) \
-	  --ramdiskaddr 0x11000000 \
+	  --ramdisk_offset 0x11000000 \
 	  --pagesize $(strip $(BOARD_KERNEL_PAGESIZE))\
 	  --output $@
 	rm -f $(PRODUCT_OUT)/ramdisk-recovery-uboot-tmp.img

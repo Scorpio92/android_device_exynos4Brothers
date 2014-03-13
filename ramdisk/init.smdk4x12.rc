@@ -28,7 +28,7 @@ on fs
     mount ext4 /dev/block/mmcblk0p2 /system rw wait
     mount ext4 /dev/block/mmcblk0p3 /data nosuid nodev noatime wait usedm discard,noauto_da_alloc,nodelalloc
     mount ext4 /dev/block/mmcblk0p4 /cache wait nosuid nodev noatime nomblk_io_submit
-    mount vfat /devices/platform/dw_mmc/mmc_host/mmc0 /mnt/ext_sd nonremovable,encryptable
+    mount vfat /devices/platform/dw_mmc/mmc_host/mmc0 /mnt/sdcard2 nonremovable,encryptable
     mount vfat /dev/block/mmcblk0p1 /mnt/sdcard2
     mount vfat /dev/block/mmcblk1p1 /mnt/sdcard
 # jmq.disable

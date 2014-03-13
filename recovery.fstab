@@ -1,8 +1,24 @@
-/sdcard		vfat		/dev/block/mmcblk1p1		/sys/devices/platform/s3c-usbgadget/gadget/lun0/file
-/emmc		vfat		/dev/block/mmcblk0p1		/sys/devices/platform/s3c-usbgadget/gadget/lun1/file
-/system		ext4		/dev/block/mmcblk0p2
-/cache		ext4		/dev/block/mmcblk0p4
-/data		ext4		/dev/block/mmcblk0p3
-/kernel		emmc		kernel
-/ramdisk    emmc		ramdisk
+# Android fstab file.
+# <src>						<mnt_point>		<type>		<mnt_flags and options>		<fs_mgr_flags>
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+/dev/block/mmcblk0p2		/system			ext4		ro,noatime		wait
+/dev/block/mmcblk0p4		/cache			ext4		noatime,nosuid,nodev,journal_async_commit,errors=panic		wait
+/dev/block/mmcblk0p3		/data			ext4		noatime,nosuid,nodev,discard,noauto_da_alloc,journal_async_commit,errors=panic		wait,check,encryptable=footer
 
+# vold-managed volumes ("block device" is actually a sysfs devpath)
+#/devices/platform/s3c-sdhci.2/mmc_host/mmc1		/mnt/sdcard		1		defaults		voldmanaged=sdcard:auto
+#/devices/platform/dw_mmc/mmc_host/mmc0		/mnt/sdcard2		1		defaults		voldmanaged=sdcard2:auto
+
+#/sdcard		vfat		/dev/block/mmcblk1p1
+#/dev/block/mmcblk0p1		/emmc			vfat		defaults		voldmanaged=emmc:auto
+#/dev/block/mmcblk1p1		/sdcard			vfat		defaults		voldmanaged=sdcard:auto
+
+#/devices/platform/s3c-sdhci.2/mmc_host/mmc1		/mnt/sdcard		vfat		defaults		voldmanaged=sdcard:auto
+#/devices/platform/dw_mmc/mmc_host/mmc0		/mnt/sdcard2		vfat		defaults		voldmanaged=sdcard2:auto
+
+/devices/platform/s3c-sdhci.2/mmc_host/mmc1		/storage/sdcard		auto		defaults		voldmanaged=sdcard:auto
+/devices/platform/dw_mmc/mmc_host/mmc0		    /storage/sdcard2		auto		defaults		voldmanaged=sdcard2:auto
+
+kernel		    /kernel				mtd		defaults		recoveryonly
+ramdisk		    /ramdisk			mtd		defaults		recoveryonly

@@ -1,8 +1,3 @@
-/dev/ttyACM0              0666   system     system
-/dev/ttyACM1              0666   system     system
-#20120919: anna add for SamSung patch.
-/dev/ttyACM2              0666   system     system
-/dev/ttyACM3              0666   system     system
 /dev/mali                 0666   system     system
 /dev/ion                  0666   system     system
 /dev/ump                  0666   system     graphics
